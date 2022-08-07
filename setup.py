@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from ztf_gif import __version__
 from setuptools import find_packages, setup
+from ztf_gif import __version__
 
 with open("requirements.txt") as f:
     required_packages = f.readlines()

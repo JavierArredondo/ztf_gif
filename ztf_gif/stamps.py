@@ -1,17 +1,15 @@
-import os
-import requests
-import pandas as pd
-import imageio
-from PIL import Image
-from PIL import ImageFont
-from PIL import ImageDraw
 from io import BytesIO
+from PIL import Image, ImageDraw, ImageFont
 from tqdm import tqdm
 from typing import List
 
+import imageio
+import os
+import pandas as pd
+import requests
+
 PATH_FILE = os.path.dirname(os.path.abspath(__file__))
 ARIAL_PATH = os.path.join(PATH_FILE, "arial.ttf")
-
 
 
 def get_detections(oid: str) -> [dict, None]:
@@ -28,12 +26,7 @@ def get_detections(oid: str) -> [dict, None]:
 
 def get_stamp(oid: str, candid: str, source="science"):
     url = "https://avro.alerce.online/get_stamp"
-    querystring = {
-        "oid": oid,
-        "candid": candid,
-        "type": source,
-        "format": "png"
-    }
+    querystring = {"oid": oid, "candid": candid, "type": source, "format": "png"}
     payload = ""
     response = requests.request("GET", url, data=payload, params=querystring)
     if response.status_code == 200:
